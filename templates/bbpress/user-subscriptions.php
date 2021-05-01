@@ -18,7 +18,7 @@
 				<h2 class="screen-heading subscribed-forums-screen"><?php _e( 'Subscribed Forums', 'buddyboss' ); ?>
 				<?php if(( bbp_get_user_forum_subscriptions() || bbp_get_user_topic_subscriptions() )): ?>
 					<?php
-						$nonce = wp_create_nonce("bbea_unsubscribe_to_all");
+						$nonce = wp_create_nonce('bbea_unsubscribe_to_all');
 						$link = admin_url('admin-ajax.php?action=bbea_unsubscribe_to_all&nonce='.$nonce);
 					?>	 
 					<a href="<?php echo $link; ?>" data-nonce="<?php echo $nonce; ?>" id="unsubscribe-all-toggle" class="subscription-toggle" rel="nofollow"

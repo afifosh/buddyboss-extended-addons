@@ -3,6 +3,13 @@
   max-width: 200px;
   float: right;
 }
+#unsubscribe-single a {
+  background: white;
+  font-size: 12px;
+  width: 90px;
+  padding: 5px;
+  margin-top: 10px;
+}
 @media only screen and (max-width: 600px) {
   .buddypress-wrap .item-body .screen-heading {
     text-align: center;

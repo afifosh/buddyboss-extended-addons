@@ -25,8 +25,10 @@ class BBEA_Setting {
    * Add option value
    */
   public function register_settings() {
-    add_option('bbea_option_discussion_types');
+    add_option('bbea_option_auto_subscribe', 1);
+    add_option('bbea_option_discussion_types', 'publish,private,inherit,closed');
     add_option('bbea_option_all_unsubscribe', 1);
+    register_setting('bbea_options_group', 'bbea_option_auto_subscribe');
     register_setting('bbea_options_group', 'bbea_option_discussion_types');
     register_setting('bbea_options_group', 'bbea_option_all_unsubscribe');
   }
@@ -54,10 +56,25 @@ class BBEA_Setting {
       <h2>Buddyboss Extended Add-ons</h2>
       <form method="post" action="options.php">
         <?php settings_fields('bbea_options_group'); ?>
-        <table>
+        <table style="text-align: left;">
           <tr valign="top">
             <th scope="row">
-              <label for="bbea_option_discussion_types">Discussion types supported (comma-separated strings): </label>
+              <label for="bbea_option_auto_subscribe">Enable auto forum & discussion subscription on group?: </label>
+            </th>
+            <td>
+              <select name="bbea_option_auto_subscribe" id="bbea_option_auto_subscribe">
+                <option value="1" 
+                  <?php echo get_option('bbea_option_auto_subscribe') == 1 ? 'selected' : ''; ?>>Yes
+                </option>
+                <option value="0" 
+                  <?php echo get_option('bbea_option_auto_subscribe') == 0 ? 'selected' : ''; ?>>No
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr valign="top">
+            <th scope="row">
+              <label for="bbea_option_discussion_types">User within group will be only subcribe to selected discussion type/s: </label>
             </th>
             <td>
               <input 
@@ -70,17 +87,12 @@ class BBEA_Setting {
               />
             </td>
           </tr>
-          <tr valign="top">
-            <th scope="row">&nbsp</th>
-            <td>
-              <label>User within group will be only subcribe to selected discussion type/s.</label>
-            </td>
-          </tr>
         </table>
-        <table>
+        <hr>
+        <table style="text-align: left;">
           <tr valign="top">
             <th scope="row">
-              <label for="bbea_option_all_unsubscribe">Enable unsubcribe button in forum subscription page: </label>
+              <label for="bbea_option_all_unsubscribe">Enable unsubcribe button in /forums/subscriptions/ page?: </label>
             </th>
             <td>
               <select name="bbea_option_all_unsubscribe" id="bbea_option_all_unsubscribe">
@@ -91,12 +103,6 @@ class BBEA_Setting {
                   <?php echo get_option('bbea_option_all_unsubscribe') == 0 ? 'selected' : ''; ?>>No
                 </option>
               </select>
-            </td>
-          </tr>
-          <tr valign="top">
-            <th scope="row">&nbsp</th>
-            <td>
-              <label></label>
             </td>
           </tr>
         </table>

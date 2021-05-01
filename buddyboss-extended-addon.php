@@ -50,19 +50,6 @@ function bbea_plugin_page_settings_link( $links ) {
 }
 
 /**
- * Register BBPress overrides
- */
-if(get_option('bbea_option_all_unsubscribe') == 1):
-  add_action('bbp_register_theme_packages', 'bbea_register_plugin_template');
-  function bbea_register_plugin_template() {
-    bbp_register_template_stack('bbea_get_template_path', 12);
-  }
-  function bbea_get_template_path() {
-    return BBEA_PLUGIN_DIR . 'bbpress/';
-  }
-endif;
-
-/**
  * Enqueues scripts and styles
  */
 add_action('wp_enqueue_scripts', 'bbea_scripts_styles', 9999);
@@ -76,17 +63,25 @@ function bbea_scripts_styles() {
    * http://codex.wordpress.org/Function_Reference/wp_deregister_style
    **/
 
-  wp_enqueue_style('bbea-css', plugins_url('/frontend/main.css', __FILE__ ), array(), BBEA_VERSION);
+  wp_enqueue_style('bbea-css', plugins_url('/main.css', __FILE__ ), array(), BBEA_VERSION);
 
   wp_localize_script('jquery', 'bbea', array('ajaxurl' => admin_url('admin-ajax.php')));
 }
 
 /**
- * Include admin setting for plugin dashboard
+ * Register BBPress overrides
  */
-require_once BBEA_PLUGIN_DIR . 'buddyboss-extended-addon-setting.php';
+if(get_option('bbea_option_all_unsubscribe') == 1):
+  add_action('bbp_register_theme_packages',  'bbea_register_plugin_template');
+  function bbea_register_plugin_template() {
+    bbp_register_template_stack('bbea_get_template_path', 12);
+  }
+  function bbea_get_template_path() {
+    return BBEA_PLUGIN_DIR . 'templates/bbpress/';
+  }
+endif;
 
 /**
- * Include admin hooks for Group subscription
+ * Include classes
  */
-require_once BBEA_PLUGIN_DIR . 'classes/class-subscription.php';
+require_once BBEA_PLUGIN_DIR . 'classes/class-index.php';

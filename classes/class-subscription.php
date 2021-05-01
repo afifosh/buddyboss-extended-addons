@@ -9,20 +9,22 @@
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-if(!class_exists('BBEA_Admin')):
+if(!class_exists('BBEA_Subscription')):
 
-class BBEA_Admin {
+class BBEA_Subscription {
 
   protected static $instance;
 
   public function __construct() {
-    // Core
-    add_action('groups_join_group', array($this, 'join_group'), 10, 2);
-    add_action('groups_membership_accepted', array($this, 'groups_membership_accepted'), 10, 2);
-    add_action('groups_leave_group', array($this, 'leave_group'), 10, 2);
-    add_action('bbp_new_topic', array($this, 'subscribe_all_users_to_new_topic'), 20, 4);
+    // Auto Subscribe
+    if(get_option('bbea_option_auto_subscribe') == 1):
+      add_action('groups_join_group', array($this, 'join_group'), 10, 2);
+      add_action('groups_membership_accepted', array($this, 'groups_membership_accepted'), 10, 2);
+      add_action('groups_leave_group', array($this, 'leave_group'), 10, 2);
+      add_action('bbp_new_topic', array($this, 'subscribe_all_users_to_new_topic'), 20, 4);
+    endif;
 
-    // Ajax
+    // Unsubscribe to all
     if(get_option('bbea_option_all_unsubscribe') == 1):
       add_action('wp_ajax_bbea_unsubscribe_to_all', array($this, 'unsubscribe_to_all'));
       add_action('wp_ajax_nopriv_bbea_unsubscribe_to_all', array($this, 'unsubscribe_to_all_no_priv'));
@@ -107,7 +109,7 @@ class BBEA_Admin {
       endif;
     endif;
 
-    $users = $this->get_bp_row(
+    $users = bbea_get_bp_row(
       'usermeta', 
       'GROUP_CONCAT(user_id) as ids', 
       'WHERE `meta_key` LIKE "%_bbp_forum_subscriptions" AND FIND_IN_SET('.$forum_id.', `meta_value`) GROUP BY "all"'
@@ -156,7 +158,7 @@ class BBEA_Admin {
       $defaul_post_status = $this->parse_bbea_option_discussion_types($bbea_option_discussion_types);
     }
 
-    $topics = $this->get_bp_row(
+    $topics = bbea_get_bp_row(
       'posts', 
       'GROUP_CONCAT(ID) as ids', 
       'WHERE `post_status` in ('.$defaul_post_status.') AND `post_parent` = '.$forum_id.' GROUP BY "all"'
@@ -216,19 +218,6 @@ class BBEA_Admin {
   }
 
   /**
-   * Generic row query for bbea
-   * @param string $table
-   * @param string $selector
-   * @param string $q
-   */
-  private function get_bp_row($table, $selector, $q) {
-    global $wpdb;
-    $table = $wpdb->prefix . $table;
-    $bp_row = $wpdb->get_row( "SELECT $selector FROM $table $q" );
-    return $bp_row;
-  }
-
-  /**
    * Admin AJAX for unsubscribing to subscriptions
    */
   public function unsubscribe_to_all() {
@@ -270,6 +259,6 @@ class BBEA_Admin {
 
 }
 
-BBEA_Admin::get_instance();
+BBEA_Subscription::get_instance();
   
 endif;
