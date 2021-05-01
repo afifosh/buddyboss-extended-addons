@@ -1,0 +1,13 @@
+#unsubscribe-all-toggle {
+  width: 100%;
+  max-width: 200px;
+  float: right;
+}
+@media only screen and (max-width: 600px) {
+  .buddypress-wrap .item-body .screen-heading {
+    text-align: center;
+  }
+  #unsubscribe-all-toggle {
+    float: none;
+  }
+}
