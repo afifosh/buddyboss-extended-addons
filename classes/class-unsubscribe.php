@@ -16,13 +16,14 @@ class BBEA_Unsubscribe {
   protected static $instance;
 
   public function __construct() {
+    if(get_option('bbea_option_unsubscribe') == 1):
+      add_action('bbp_theme_after_forum_description', function() {
+        require BBEA_PLUGIN_DIR . 'templates/forum/template-unsubscribe-single.php';
+      });
 
-    add_action('bbp_theme_after_forum_description', function() {
-      require BBEA_PLUGIN_DIR . 'templates/forum/template-unsubscribe-single.php';
-    });
-
-    add_action('wp_ajax_bbea_unsubscribe', array($this, 'unsubscribe'));
-    add_action('wp_ajax_nopriv_bbea_unsubscribe', array($this, 'unsubscribe_no_priv'));
+      add_action('wp_ajax_bbea_unsubscribe', array($this, 'unsubscribe'));
+      add_action('wp_ajax_nopriv_bbea_unsubscribe', array($this, 'unsubscribe_no_priv'));
+    endif;
   }
 
   /**

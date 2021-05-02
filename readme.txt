@@ -26,9 +26,10 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == 🚀 Admin Setting Features ==
 
-• Allow admin to enable/disable auto subscription to forum & discussions in group module
-• Allow admin to exclude topic/discussion type.
-• Allow admin to enable/disable "Remove subscription" button in /forums/subscriptions page. 
+• Enable/disable auto subscription to forum & discussions in group module.
+• Exclude topic/discussion type.
+• Enable/disable unsubscribe button in forum cards.
+• Enable/disable "Remove subscription" button in /forums/subscriptions page. 
 
 == Frequently Asked Questions ==
 

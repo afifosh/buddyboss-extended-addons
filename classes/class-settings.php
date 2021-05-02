@@ -27,9 +27,11 @@ class BBEA_Setting {
   public function register_settings() {
     add_option('bbea_option_auto_subscribe', 1);
     add_option('bbea_option_discussion_types', 'publish,private,inherit,closed');
+    add_option('bbea_option_unsubscribe', 1);
     add_option('bbea_option_all_unsubscribe', 1);
     register_setting('bbea_options_group', 'bbea_option_auto_subscribe');
     register_setting('bbea_options_group', 'bbea_option_discussion_types');
+    register_setting('bbea_options_group', 'bbea_option_unsubscribe');
     register_setting('bbea_options_group', 'bbea_option_all_unsubscribe');
   }
 
@@ -92,7 +94,22 @@ class BBEA_Setting {
         <table style="text-align: left;">
           <tr valign="top">
             <th scope="row">
-              <label for="bbea_option_all_unsubscribe">Enable unsubcribe button in /forums/subscriptions/ page?: </label>
+              <label for="bbea_option_unsubscribe">Enable unsubscribe button in forum cards? : </label>
+            </th>
+            <td>
+              <select name="bbea_option_unsubscribe" id="bbea_option_unsubscribe">
+                <option value="1" 
+                  <?php echo get_option('bbea_option_unsubscribe') == 1 ? 'selected' : ''; ?>>Yes
+                </option>
+                <option value="0" 
+                  <?php echo get_option('bbea_option_unsubscribe') == 0 ? 'selected' : ''; ?>>No
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr valign="top">
+            <th scope="row">
+              <label for="bbea_option_all_unsubscribe">Enable unsubcribe button in /forums/subscriptions page? : </label>
             </th>
             <td>
               <select name="bbea_option_all_unsubscribe" id="bbea_option_all_unsubscribe">
