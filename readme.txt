@@ -15,7 +15,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == 🚀 Forum Extended Features ==
 
-• Allow users to unsubscribe to a specific forum card.
+• Allow users to subscribe/unsubscribe to a specific forum card.
 • Allow users to remove all their subscription in /forums/subscriptions page.
 
 == 🚀 Group Extended Features ==
@@ -28,7 +28,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 • Enable/disable auto subscription to forum & discussions in group module.
 • Exclude topic/discussion type.
-• Enable/disable unsubscribe button in forum cards.
+• Enable/disable subscribe/unsubscribe button in forum cards.
 • Enable/disable "Remove subscription" button in /forums/subscriptions page. 
 
 == Frequently Asked Questions ==

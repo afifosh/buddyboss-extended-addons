@@ -15,3 +15,15 @@ function bbea_get_bp_row($table, $selector, $q) {
   $bp_row = $wpdb->get_row( "SELECT $selector FROM $table $q" );
   return $bp_row;
 }
+
+/**
+ * Get forum topics
+ * @param int $forum_id
+ */
+function bbea_get_forum_topics($forum_id) {
+  return bbea_get_bp_row(
+    'posts', 
+    'GROUP_CONCAT(ID) as ids', 
+    'WHERE `post_parent` = '.$forum_id.' GROUP BY "all"'
+  );
+}
