@@ -28,8 +28,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 • Enable/disable auto subscription to forum & discussions in group module.
 • Exclude topic/discussion type.
-• Enable/disable subscribe/unsubscribe button in forum cards.
-• Enable/disable "Remove subscription" button in /forums/subscriptions page. 
+• Enable/disable subscribe/unsubscribe button in forum cards. (Using Buddyboss Font Cheatsheet)
+• Change the subcribe/unscribe logo for forum cards. 
+• Enable/disable "Remove subscription" button in /forums/subscriptions page.
 
 == Frequently Asked Questions ==
 
@@ -40,6 +41,12 @@ Yes it is 100% free to use and distribute
 = I want to support this project =
 
 Donate link: https://www.paypal.me/jcatama
+
+== Screenshots ==
+
+1. Plugin setting can be found under: Settings > Buddyboss Extended Add-on.
+2. Unsubscribe/Subcribe button in forum card.
+2. "Remove all subscriptions" button under /forums/subscriptions.
 
 == Changelog ==
 

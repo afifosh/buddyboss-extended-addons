@@ -29,10 +29,14 @@ class BBEA_Setting {
     add_option('bbea_option_discussion_types', 'publish,private,inherit,closed');
     add_option('bbea_option_subscribe', 1);
     add_option('bbea_option_all_unsubscribe', 1);
+    add_option('bbea_subscribe_icon', 'bb-icon-bell-plus');
+    add_option('bbea_unsubscribe_icon', 'bb-icon-bell-off');
     register_setting('bbea_options_group', 'bbea_option_auto_subscribe');
     register_setting('bbea_options_group', 'bbea_option_discussion_types');
     register_setting('bbea_options_group', 'bbea_option_subscribe');
     register_setting('bbea_options_group', 'bbea_option_all_unsubscribe');
+    register_setting('bbea_options_group', 'bbea_subscribe_icon');
+    register_setting('bbea_options_group', 'bbea_unsubscribe_icon');
   }
 
   /**
@@ -55,7 +59,7 @@ class BBEA_Setting {
 
   public function bbea_options_page() { ?>
     <div id="bbea-settings">
-      <h2>Buddyboss Extended Add-ons</h2>
+      <h2>Buddyboss Extended Add-on</h2>
       <form method="post" action="options.php">
         <?php settings_fields('bbea_options_group'); ?>
         <table style="text-align: left;">
@@ -120,6 +124,43 @@ class BBEA_Setting {
                   <?php echo get_option('bbea_option_all_unsubscribe') == 0 ? 'selected' : ''; ?>>No
                 </option>
               </select>
+            </td>
+          </tr>
+        </table>
+        <hr>
+        <h3>Change subscribe & unsubcribe icon</h3>
+        <a target="_blank" href="https://www.buddyboss.com/resources/font-cheatsheet/">Check the font-cheatsheet? click me!</a>
+        <table style="text-align: left;">
+          <tr valign="top">
+            <th scope="row">
+              <label for="bbea_subscribe_icon">Subcribe Icon : </label>
+            </th>
+            <td>
+              <input 
+                style=""
+                type="text" 
+                id="bbea_subscribe_icon" 
+                name="bbea_subscribe_icon" 
+                value="<?php echo get_option('bbea_subscribe_icon'); ?>" 
+                placeholder="bb-icon-bell-plus"
+                required
+              />
+            </td>
+          </tr>
+          <tr valign="top">
+            <th scope="row">
+              <label for="bbea_unsubscribe_icon">Unsubcribe Icon : </label>
+            </th>
+            <td>
+              <input 
+                style=""
+                type="text" 
+                id="bbea_unsubscribe_icon" 
+                name="bbea_unsubscribe_icon" 
+                value="<?php echo get_option('bbea_unsubscribe_icon'); ?>" 
+                placeholder="bb-icon-bell-off"
+                required
+              />
             </td>
           </tr>
         </table>

@@ -18,7 +18,7 @@
 defined('ABSPATH') || exit;
 
 if(!defined('BBEA_VERSION')) {
-	define('BBEA_VERSION', '1.0.0');
+	define('BBEA_VERSION', 'v1.0.0');
 }
 
 if(!defined('BBEA_PLUGIN_DIR')) {

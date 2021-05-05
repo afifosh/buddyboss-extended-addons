@@ -22,9 +22,10 @@
 						$link = admin_url('admin-ajax.php?action=bbea_unsubscribe_to_all&nonce='.$nonce);
 					?>	 
 					<a href="<?php echo $link; ?>" data-nonce="<?php echo $nonce; ?>" id="unsubscribe-all-toggle" class="subscription-toggle" rel="nofollow"
-						data-balloon-pos="up" data-balloon="This will unsubcribe you to all forums & discussions."
+						data-balloon-pos="up" 
+						data-balloon="<?php _e( 'This will unsubcribe you to all forums & discussions.', 'buddyboss' ); ?>"
 					>
-						<?php _e( 'Remove all subscription', 'buddyboss' ); ?>
+						<?php _e( 'Remove all subscriptions', 'buddyboss' ); ?>
 					</a>
 				<?php endif; ?>
 				</h2>
