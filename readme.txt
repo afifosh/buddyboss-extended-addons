@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/jcatama
 Tags: buddyboss, buddypress, learndash, forums groups, discussions, topics
 Requires at least: 5.4
 Tested up to: 5.7
-Stable tag: 1.0
+Stable tag: 1.0.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -50,5 +50,9 @@ Donate link: https://www.paypal.me/jcatama
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.1 =
+* Added popover in subcribe & usubcribe button
+* Translation improvements
+
+= 1.0.0 =
 * Initial Release
